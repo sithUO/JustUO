@@ -77,7 +77,11 @@ namespace Server.Misc
 
         private void Restart_Callback()
         {
+	    #if !MONO
             Core.Kill(true);
+	    #else
+	    Core.Kill();
+	    #endif
         }
     }
 }
